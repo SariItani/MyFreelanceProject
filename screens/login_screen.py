@@ -42,8 +42,6 @@ class LoginScreen(tk.Frame):
         self.login_button = tk.Button(self, text="Login", command=self.pick_screen)
         self.login_button.pack()
 
-        self.protocol("WM_DELETE_WINDOW", self.quit_app)
-
 
     def login(self, username, password):
         with open("database/login.txt", "r") as f:
@@ -79,7 +77,3 @@ class LoginScreen(tk.Frame):
             screen.mainloop()
         else:
             print("Role Not Found.")
-        
-    def quit_app(self):
-        if tk.messagebox.askokcancel("Quit", "Are you sure you want to quit?"):
-            self.destroy()
