@@ -17,14 +17,14 @@ class EnterCivilId(tk.Toplevel):
 
         # create options label and radio buttons
         self.options_label = tk.Label(self, text="Select action:")
-        self.options_label.pack()
+        self.options_label.pack(pady=5)
         self.action_var = tk.StringVar()
         self.green_channel_button = tk.Radiobutton(self, text="Allow through Green channel", variable=self.action_var, value="green_channel")
-        self.green_channel_button.pack()
+        self.green_channel_button.pack(pady=5)
         self.self_declared_button = tk.Radiobutton(self, text="Passenger self-declared Items", variable=self.action_var, value="self_declared")
-        self.self_declared_button.pack()
+        self.self_declared_button.pack(pady=5)
         self.inspect_items_button = tk.Radiobutton(self, text="Inspect items", variable=self.action_var, value="inspect_items")
-        self.inspect_items_button.pack()
+        self.inspect_items_button.pack(pady=5)
 
         # create fines input field, initially hidden
         self.fines_label = tk.Label(self, text="Fines amount (0 to 20000):")

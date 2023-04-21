@@ -7,7 +7,7 @@ class ChangePassengerStatus(tk.Toplevel):
     def __init__(self, master):
         super().__init__(master)
         self.title("Change Passenger Status")
-        self.geometry("300x300")
+        self.geometry("280x250")
         self.resizable(False, False)
 
         # create a label and entry for Civil ID
