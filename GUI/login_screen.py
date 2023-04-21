@@ -28,13 +28,12 @@ class LoginScreen(tk.Frame):
         self.login_button = tk.Button(self, text="Login", command=self.pick_screen)
         self.login_button.pack()
 
-    def login(self):
-        username = self.username.get()
-        password = self.password.get()
-        
+    def login(self, username, password):
         with open("login.txt", "r") as f:
             reader = csv.reader(f)
             for row in reader:
+                if len(row) < 3:
+                    continue
                 if row[1] == username:
                     if bcrypt.checkpw(password.encode(), row[2].encode()):
                         messagebox.showinfo("Login", "Login successful")
@@ -44,21 +43,25 @@ class LoginScreen(tk.Frame):
             else:
                 messagebox.showerror("Login Error", "Incorrect username or password")
 
+
     def pick_screen(self):
         username = self.username_entry.get()
         password = self.password_entry.get()
         role = self.login(username, password)
+        screen = None  # Set screen to None initially
         if role is not None:
             print("Picking screen...")
-            if role == "Immigration officer":
+            if role == "Immigration Officer":
                 screen = immigration_officer_screen.ImmigrationOfficerScreen(self.master)
-            elif role == "Customs officer":
+            elif role == "Customs Officer":
                 screen = customs_officer_screen.CustomsOfficerScreen(self.master)
+        if screen is not None:  # Check if screen was assigned
             screen.mainloop()
         else:
             print("Role Not Found.")
 
-# # create an instance of the LoginScreen class
-# root = tk.Tk()
-# screen = LoginScreen(root)
-# screen.mainloop()
+
+# create an instance of the LoginScreen class
+root = tk.Tk()
+screen = LoginScreen(root)
+screen.mainloop()

@@ -17,9 +17,9 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
-import change_passenger_status
-import add_passenger_entry
-import search_passenger
+import passenger_management.add_passenger_entry
+import passenger_management.search_passenger
+import passenger_management.change_passenger_status
 
 class ImmigrationOfficerScreen(tk.Frame):
     def __init__(self, master):
