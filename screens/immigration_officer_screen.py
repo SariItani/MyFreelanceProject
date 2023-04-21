@@ -27,7 +27,7 @@ class ImmigrationOfficerScreen(tk.Frame):
         super().__init__(master)
         self.master = master
         self.master.title("Immigration Officer Screen")
-        self.master.geometry("220x150")
+        self.master.geometry("350x150")
         self.pack()
 
         self.menu = tk.Menu(self.master)
