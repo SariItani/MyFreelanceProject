@@ -2,8 +2,8 @@ import csv
 from tkinter import messagebox
 import bcrypt
 import tkinter as tk
-import immigration_officer_screen
-import customs_officer_screen
+from screens import customs_officer_screen
+from screens import immigration_officer_screen
 
 class LoginScreen(tk.Frame):
     def __init__(self, master):
@@ -44,7 +44,7 @@ class LoginScreen(tk.Frame):
 
 
     def login(self, username, password):
-        with open("login.txt", "r") as f:
+        with open("database/login.txt", "r") as f:
             reader = csv.reader(f)
             for row in reader:
                 if len(row) < 3:

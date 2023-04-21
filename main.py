@@ -1,18 +1,27 @@
 # In the login.txt file, you will store ID, Username, Password, Role (Immigration officer or Customs officer)
 # In passenger.txt, you will store Civil ID, Name, Date of Birth, Gender, Customs Fine, and Status (dict: Civil ID as Key and other information as list values)
+# import tkinter as tk
+# import immigration_officer_screen as i
+# from login_screen import LoginScreen
+# import customs_officer_screen as c
+
+
+# root = tk.Tk()
+# app = LoginScreen(root)
+# root.mainloop()
+
+# # Once the user has logged in, you can get the user's role and create the appropriate screen
+# if app.role == "Immigration Officer":
+#     screen = i.ImmigrationOfficerScreen(root)
+# elif app.role == "Customs Officer":
+#     screen = c.CustomsOfficerScreen(root)
+# screen.mainloop()
+
 import tkinter as tk
-import immigration_officer_screen as i
-from login_screen import LoginScreen
-import customs_officer_screen as c
+from screens.login_screen import LoginScreen
 
-
-root = tk.Tk()
-app = LoginScreen(root)
-root.mainloop()
-
-# Once the user has logged in, you can get the user's role and create the appropriate screen
-if app.role == "Immigration Officer":
-    screen = i.ImmigrationOfficerScreen(root)
-elif app.role == "Customs Officer":
-    screen = c.CustomsOfficerScreen(root)
-screen.mainloop()
+if __name__ == '__main__':
+    root = tk.Tk()
+    root.title("My App")
+    LoginScreen(root)
+    root.mainloop()

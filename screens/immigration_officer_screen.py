@@ -17,7 +17,7 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
-from login_screen import LoginScreen
+from screens import login_screen as l
 import passenger_management.add_passenger_entry as a
 import passenger_management.search_passenger as s
 import passenger_management.change_passenger_status as c
@@ -53,4 +53,4 @@ class ImmigrationOfficerScreen(tk.Frame):
     def logout(self):
         if messagebox.askokcancel("Logout", "Are you sure you want to logout?"):
             self.master.withdraw()
-            LoginScreen(tk.Tk())
+            l.LoginScreen(tk.Tk())

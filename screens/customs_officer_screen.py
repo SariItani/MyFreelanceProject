@@ -15,7 +15,7 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
-from login_screen import LoginScreen
+from screens import login_screen as l
 import passenger_management.enter_civil_id as e
 import passenger_management.see_report as s
 
@@ -47,4 +47,4 @@ class CustomsOfficerScreen(tk.Frame):
     def logout(self):
         if messagebox.askokcancel("Logout", "Are you sure you want to logout?"):
             self.master.withdraw()
-            LoginScreen(tk.Tk())
+            l.LoginScreen(tk.Tk())
