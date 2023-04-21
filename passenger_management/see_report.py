@@ -7,7 +7,7 @@ class SeeReport(tk.Toplevel):
     def __init__(self, master):
         super().__init__(master)
         self.title("See Report")
-        self.geometry("300x300")
+        self.geometry("300x150")
         self.resizable(False, False)
 
         # create labels to display metrics
@@ -25,9 +25,8 @@ class SeeReport(tk.Toplevel):
         self.go_back_button.pack()
 
         # read passenger data from database/passengers.csv
-        with open("database/passengers.csv", "r") as file:
+        with open("database/passengers.txt", "r") as file:
             passenger_data = csv.reader(file)
-            next(passenger_data) # skip header row
 
             # calculate metrics
             total_fine = 0
