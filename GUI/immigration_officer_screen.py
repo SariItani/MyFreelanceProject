@@ -15,21 +15,39 @@
     # 4. Logout
     # call login scene
 import tkinter as tk
-import passenger_details_screen
-import new_passenger_screen
-import search_passenger_screen
+from tkinter import ttk
+from tkinter import messagebox
+import change_passenger_status
+import add_passenger_entry
+import search_passenger
 
 class ImmigrationOfficerScreen(tk.Frame):
     def __init__(self, master):
         super().__init__(master)
+        self.master = master
+        self.master.title("Immigration Officer Screen")
+        self.pack()
 
-        # create and place widgets
-        self.label = tk.Label(self, text="Immigration Officer Screen")
-        self.label.pack()
+        self.menu = tk.Menu(self.master)
+        self.master.config(menu=self.menu)
 
-        self.button = tk.Button(self, text="Logout", command=self.logout)
-        self.button.pack()
+        self.passenger_menu = tk.Menu(self.menu)
+        self.menu.add_cascade(label="Passenger", menu=self.passenger_menu)
+        self.passenger_menu.add_command(label="Existing Passenger", command=self.change_passenger_status)
+        self.passenger_menu.add_command(label="New Passenger", command=self.add_passenger_entry)
+        self.passenger_menu.add_command(label="Search Passenger", command=self.search_passenger)
+        self.passenger_menu.add_separator()
+        self.passenger_menu.add_command(label="Logout", command=self.logout)
+
+    def change_passenger_status(self):
+        change_passenger_status.ChangePassengerStatus(self.master)
+
+    def add_passenger_entry(self):
+        add_passenger_entry.AddPassengerEntry(self.master)
+
+    def search_passenger(self):
+        search_passenger.SearchPassenger(self.master)
 
     def logout(self):
-        # handle logout button press
-        pass
+        if messagebox.askokcancel("Logout", "Are you sure you want to logout?"):
+            self.master.withdraw()

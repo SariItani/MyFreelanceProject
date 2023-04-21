@@ -1,0 +1,35 @@
+Password: password123
+Hash: $2b$12$nxleR7.CmhSEWopyoVFC0OAJsckwv/4Bbt1Ez7U/zOOQJMYJ5yeiy
+
+Password: helloWorld!
+Hash: $2b$12$RJxzLoxem0ZFi.1BzpNt9uhN/AmZe7aODcVLWyRMLpdwXudY9hjhm
+
+Password: letmein
+Hash: $2b$12$slsij1ga/q.l4mgp2qW3aeMdb0Vu0AVg6kmf6QfdfaBjOI9Q5zXVm
+
+Password: p@ssword123
+Hash: $2b$12$c2n.bj2G..VwdQATSgayu.r9wZlIR4hqtEeSp8DJ25kbSPhYqhhQ6
+
+Password: qwerty1234
+Hash: $2b$12$9KkFkpWOsHdgmjWUAAxGCuXzOtAfdNXp2nJUgNKKa5K9Yi6DMmP9i
+
+Password: letmein!
+Hash: $2b$12$cYfHZB6CRgQoqfqvWeW/r.YA8pfy0THVdax37SjNWT4ceaeT6zUBK
+
+Password: hello123
+Hash: $2b$12$xntcaZ6WT77E08p84euXO.VBDHH4M8AS0/L12XqzLBewAZidkPUga
+
+Password: welcome123
+Hash: $2b$12$iEK6qWEL4T82lpFjaIqxG.Y4py4KdWHpci.EA4/NAY6Sul/e6Axh.
+
+Password: password1234
+Hash: $2b$12$Q3Ncn8MrODGfJSgtfwDHSOQD1jbTK3DvmCTqO2Io2JaV.u28cMmse
+
+Password: 12345678
+Hash: $2b$12$ipntQgdvrqQSBJO05nGM..Ik3/1du7vsx9eZjqv/U8LH7MHVNwE22
+
+Password: s3cur3Pa55word
+Hash: $2b$12$FSIrxVgxcmkYeCUguj/0E.MwYsaeo3606tKXgzeCu7egApqEui.BK
+
+Password: Pa$$word123
+Hash: $2b$12$r7wjyx6QXD53boPF6s5IK.tf/P1o.D5SQq/6UbITMMDT8ztTj3Evy

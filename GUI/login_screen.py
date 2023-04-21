@@ -1,33 +1,64 @@
+import csv
+from tkinter import messagebox
 import bcrypt
+import tkinter as tk
 import immigration_officer_screen
 import customs_officer_screen
 
-def authenticate(username: str, password: str) -> str:
-    with open('login.txt', 'r') as f:
-        data = f.readlines()
+class LoginScreen(tk.Frame):
+    def __init__(self, master):
+        super().__init__(master)
+        self.master = master
+        self.master.title("Login Screen")
+        self.pack()
 
-    for line in data:
-        fields = line.strip().split(',')
-        if fields[1] == username:
-            hashed_password = fields[2].encode('utf-8')
-            if bcrypt.checkpw(password.encode('utf-8'), hashed_password):
-                return fields[3] # return the role
+        # create username label and entry widget
+        self.username_label = tk.Label(self, text="Username:")
+        self.username_label.pack()
+        self.username_entry = tk.Entry(self)
+        self.username_entry.pack()
+
+        # create password label and entry widget
+        self.password_label = tk.Label(self, text="Password:")
+        self.password_label.pack()
+        self.password_entry = tk.Entry(self, show="\u25CF")
+        self.password_entry.pack()
+
+        # create login button
+        self.login_button = tk.Button(self, text="Login", command=self.pick_screen)
+        self.login_button.pack()
+
+    def login(self):
+        username = self.username.get()
+        password = self.password.get()
+        
+        with open("login.txt", "r") as f:
+            reader = csv.reader(f)
+            for row in reader:
+                if row[1] == username:
+                    if bcrypt.checkpw(password.encode(), row[2].encode()):
+                        messagebox.showinfo("Login", "Login successful")
+                        return row[3]
+                    else:
+                        break
             else:
-                return None # password is incorrect
+                messagebox.showerror("Login Error", "Incorrect username or password")
 
-    return None # username not found
+    def pick_screen(self):
+        username = self.username_entry.get()
+        password = self.password_entry.get()
+        role = self.login(username, password)
+        if role is not None:
+            print("Picking screen...")
+            if role == "Immigration officer":
+                screen = immigration_officer_screen.ImmigrationOfficerScreen(self.master)
+            elif role == "Customs officer":
+                screen = customs_officer_screen.CustomsOfficerScreen(self.master)
+            screen.mainloop()
+        else:
+            print("Role Not Found.")
 
-username = input("Enter username: ") # now CLI, later to be GUI
-password = input("Enter password: ") # now CLU, later to be GUI
-
-role = authenticate(username, password)
-if role is not None:
-    print("Authentication successful!")
-    if role == "Immigration officer":
-        # call Immigration Officer screen
-        pass
-    elif role == "Customs officer":
-        # call Customs Officer screen
-        pass
-else:
-    print("Incorrect username or password.")
+# # create an instance of the LoginScreen class
+# root = tk.Tk()
+# screen = LoginScreen(root)
+# screen.mainloop()
