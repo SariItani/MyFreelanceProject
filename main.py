@@ -5,6 +5,7 @@ from screens.login_screen import LoginScreen
 
 if __name__ == '__main__':
     root = tk.Tk()
-    root.title("My App")
+    root.tk.call('wm', 'iconphoto', root._w, tk.PhotoImage(file='static/logo.png'))
+    root.title("Welcome Officer")
     LoginScreen(root)
     root.mainloop()

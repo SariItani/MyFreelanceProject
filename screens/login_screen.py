@@ -9,16 +9,10 @@ class LoginScreen(tk.Frame):
     def __init__(self, master):
         super().__init__(master)
         self.master = master
-        self.master.geometry("220x160")
-        self.master.title("Login Screen")
+        self.master.geometry("250x180")
+        self.master.title("Welcome Officer!")
         self.configure(background='grey') # set the background color
         self.pack(fill='both', expand=True)
-
-        # # create a logo image
-        # self.logo = tk.PhotoImage(file="GUI/logo.png")
-        # self.logo_label = tk.Label(self, image=self.logo)
-        # self.logo_label.pack(pady=20)
-        # self.master.iconphoto(False, self.logo)
 
         # # create a background texture image
         # bg_image = tk.PhotoImage(file='GUI/background_texture.jpg')
@@ -28,19 +22,19 @@ class LoginScreen(tk.Frame):
 
         # create username label and entry widget
         self.username_label = tk.Label(self, text="Username:")
-        self.username_label.pack()
+        self.username_label.pack(pady=2)
         self.username_entry = tk.Entry(self)
-        self.username_entry.pack()
+        self.username_entry.pack(pady=1)
 
         # create password label and entry widget
         self.password_label = tk.Label(self, text="Password:")
         self.password_label.pack()
         self.password_entry = tk.Entry(self, show="\u25CF")
-        self.password_entry.pack()
+        self.password_entry.pack(pady=1)
 
         # create login button
         self.login_button = tk.Button(self, text="Login", command=self.pick_screen)
-        self.login_button.pack()
+        self.login_button.pack(pady=5)
 
         # create quit button
         self.quit_button = tk.Button(self, text="Quit", command=self.master.quit)
