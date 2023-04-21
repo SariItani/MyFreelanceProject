@@ -66,8 +66,10 @@ class LoginScreen(tk.Frame):
         if role is not None:
             print("Picking screen...")
             if role == "Immigration Officer":
+                print("Picked Immigration Officer screen.")
                 screen = immigration_officer_screen.ImmigrationOfficerScreen(self.master)
             elif role == "Customs Officer":
+                print("Picked Customs Officer screen.")
                 screen = customs_officer_screen.CustomsOfficerScreen(self.master)
         if screen is not None:  # Check if screen was assigned
             self.destroy()  # Remove all widgets from the screen
