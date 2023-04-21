@@ -17,15 +17,17 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
-import passenger_management.add_passenger_entry
-import passenger_management.search_passenger
-import passenger_management.change_passenger_status
+from login_screen import LoginScreen
+import passenger_management.add_passenger_entry as a
+import passenger_management.search_passenger as s
+import passenger_management.change_passenger_status as c
 
 class ImmigrationOfficerScreen(tk.Frame):
     def __init__(self, master):
         super().__init__(master)
         self.master = master
         self.master.title("Immigration Officer Screen")
+        self.master.geometry("220x150")
         self.pack()
 
         self.menu = tk.Menu(self.master)
@@ -40,14 +42,15 @@ class ImmigrationOfficerScreen(tk.Frame):
         self.passenger_menu.add_command(label="Logout", command=self.logout)
 
     def change_passenger_status(self):
-        change_passenger_status.ChangePassengerStatus(self.master)
+        c.ChangePassengerStatus(self.master)
 
     def add_passenger_entry(self):
-        add_passenger_entry.AddPassengerEntry(self.master)
+        a.AddPassengerEntry(self.master)
 
     def search_passenger(self):
-        search_passenger.SearchPassenger(self.master)
+        s.SearchPassenger(self.master)
 
     def logout(self):
         if messagebox.askokcancel("Logout", "Are you sure you want to logout?"):
             self.master.withdraw()
+            LoginScreen(tk.Tk())

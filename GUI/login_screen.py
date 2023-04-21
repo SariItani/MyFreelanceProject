@@ -9,8 +9,22 @@ class LoginScreen(tk.Frame):
     def __init__(self, master):
         super().__init__(master)
         self.master = master
+        self.master.geometry("220x150")
         self.master.title("Login Screen")
-        self.pack()
+        self.configure(background='grey') # set the background color
+        self.pack(fill='both', expand=True)
+
+        # # create a logo image
+        # self.logo = tk.PhotoImage(file="GUI/logo.png")
+        # self.logo_label = tk.Label(self, image=self.logo)
+        # self.logo_label.pack(pady=20)
+        # self.master.iconphoto(False, self.logo)
+
+        # # create a background texture image
+        # bg_image = tk.PhotoImage(file='GUI/background_texture.jpg')
+        # bg_label = tk.Label(self, image=bg_image)
+        # bg_label.image = bg_image # keep a reference to prevent the image from being garbage collected
+        # bg_label.place(relx=0.5, rely=0.5, anchor='center')
 
         # create username label and entry widget
         self.username_label = tk.Label(self, text="Username:")
@@ -28,6 +42,7 @@ class LoginScreen(tk.Frame):
         self.login_button = tk.Button(self, text="Login", command=self.pick_screen)
         self.login_button.pack()
 
+
     def login(self, username, password):
         with open("login.txt", "r") as f:
             reader = csv.reader(f)
@@ -43,7 +58,6 @@ class LoginScreen(tk.Frame):
             else:
                 messagebox.showerror("Login Error", "Incorrect username or password")
 
-
     def pick_screen(self):
         username = self.username_entry.get()
         password = self.password_entry.get()
@@ -56,12 +70,12 @@ class LoginScreen(tk.Frame):
             elif role == "Customs Officer":
                 screen = customs_officer_screen.CustomsOfficerScreen(self.master)
         if screen is not None:  # Check if screen was assigned
+            self.destroy()  # Remove all widgets from the screen
             screen.mainloop()
         else:
             print("Role Not Found.")
 
 
-# create an instance of the LoginScreen class
-root = tk.Tk()
-screen = LoginScreen(root)
-screen.mainloop()
+# root = tk.Tk()
+# app = LoginScreen(root)
+# root.mainloop()
