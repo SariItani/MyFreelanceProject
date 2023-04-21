@@ -24,7 +24,7 @@ class ChangePassengerStatus(tk.Toplevel):
         status_dropdown.pack(pady=5)
 
         # create a button to close the popup window
-        cancel_button = tk.Button(self, text="Cancel", command=self.destroy)
+        cancel_button = tk.Button(self, text="Go Back", command=self.destroy)
         cancel_button.pack(pady=5)
 
         # create a button to submit the status

@@ -1,3 +1,4 @@
 469,Sari Itani,14/08/2003,M,0,Pending
 468,Nadine Khalil,2/3/2001,F,0,Pending
-5000,Daddy Boy,12/9/2050,None,0,Arrival Approved
+5000,Daddy Boy,12/9/2050,None,0,Arrival Rejected
+100,THe Joker,1/1/1900,M,2303,Arrival Approved

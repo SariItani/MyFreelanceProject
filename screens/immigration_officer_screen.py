@@ -34,12 +34,11 @@ class ImmigrationOfficerScreen(tk.Frame):
         self.master.config(menu=self.menu)
 
         self.passenger_menu = tk.Menu(self.menu)
-        self.menu.add_cascade(label="Passenger", menu=self.passenger_menu)
+        self.menu.add_cascade(label="Options", menu=self.passenger_menu)
         self.passenger_menu.add_command(label="Existing Passenger", command=self.change_passenger_status)
         self.passenger_menu.add_command(label="New Passenger", command=self.add_passenger_entry)
         self.passenger_menu.add_command(label="Search Passenger", command=self.search_passenger)
-        self.passenger_menu.add_separator()
-        self.passenger_menu.add_command(label="Logout", command=self.logout)
+        self.menu.add_command(label="Logout", command=self.logout)
 
     def change_passenger_status(self):
         c.ChangePassengerStatus(self.master)

@@ -24,7 +24,7 @@ class AddPassengerEntry(tk.Toplevel):
 
         # create button widgets
         self.add_button = tk.Button(self, text="Add Passenger", command=self.add_passenger)
-        self.cancel_button = tk.Button(self, text="Cancel", command=self.destroy)
+        self.cancel_button = tk.Button(self, text="Go Back", command=self.destroy)
 
         # place widgets on the form
         self.civil_id_label.grid(row=0, column=0, padx=5, pady=5)

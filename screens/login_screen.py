@@ -9,7 +9,7 @@ class LoginScreen(tk.Frame):
     def __init__(self, master):
         super().__init__(master)
         self.master = master
-        self.master.geometry("220x150")
+        self.master.geometry("220x160")
         self.master.title("Login Screen")
         self.configure(background='grey') # set the background color
         self.pack(fill='both', expand=True)
@@ -41,6 +41,10 @@ class LoginScreen(tk.Frame):
         # create login button
         self.login_button = tk.Button(self, text="Login", command=self.pick_screen)
         self.login_button.pack()
+
+        # create quit button
+        self.quit_button = tk.Button(self, text="Quit", command=self.master.quit)
+        self.quit_button.pack(pady=5)
 
 
     def login(self, username, password):

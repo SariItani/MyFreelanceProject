@@ -36,7 +36,7 @@ class CustomsOfficerScreen(tk.Frame):
 
         # create passenger menu
         self.passenger_menu = tk.Menu(self.menu)
-        self.menu.add_cascade(label="Passenger", menu=self.passenger_menu)
+        self.menu.add_cascade(label="Options", menu=self.passenger_menu)
         self.passenger_menu.add_command(label="Enter ID", command=self.enter_id)
         self.passenger_menu.add_command(label="See Report", command=self.see_report)
 
