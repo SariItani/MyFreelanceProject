@@ -1,57 +1,48 @@
-import csv
 import tkinter as tk
 from tkinter import ttk
+from tkinter import messagebox
+import csv
 
+class SeeReport(tk.Toplevel):
+    def __init__(self, master):
+        super().__init__(master)
+        self.title("See Report")
+        self.geometry("300x300")
+        self.resizable(False, False)
 
-def see_report(self):
-    # read passenger data from file and calculate total fines and number of passengers
-    total_fines = 0
-    num_passengers = 0
-    passengers_with_fine_greater_than_5000 = []
-    with open("database/passengers.txt", "r") as f:
-        reader = csv.reader(f)
-        next(reader)  # skip header row
-        for row in reader:
-            num_passengers += 1
-            fines = int(row[3])
-            total_fines += fines
-            if fines > 5000:
-                passengers_with_fine_greater_than_5000.append(row)
+        # create labels to display metrics
+        total_fine_label = tk.Label(self, text="Total Customs Fine Collected: ")
+        total_fine_label.pack(pady=5)
 
-    # calculate average fine per passenger
-    if num_passengers == 0:
-        average_fine_per_passenger = 0
-    else:
-        average_fine_per_passenger = total_fines / num_passengers
+        avg_fine_label = tk.Label(self, text="Average Fine Per Passenger: ")
+        avg_fine_label.pack(pady=5)
 
-    # create a new window to show the report
-    self.report_window = tk.Toplevel(self.master)
-    self.report_window.title("Customs Fine Report")
-    self.report_window.geometry("500x400")
+        high_fine_label = tk.Label(self, text="Passengers with Fine Greater Than 5000 KD: ")
+        high_fine_label.pack(pady=5)
 
-    # create labels for the report metrics
-    total_fines_label = tk.Label(self.report_window, text=f"Total Customs Fine Collected: {total_fines} KD")
-    total_fines_label.pack()
-    average_fine_label = tk.Label(self.report_window, text=f"Average Fine per Passenger: {average_fine_per_passenger:.2f} KD")
-    average_fine_label.pack()
+        # create go back button
+        self.go_back_button = tk.Button(self, text="Go Back", command=self.destroy)
+        self.go_back_button.pack()
 
-    # create a table to show passengers with fines greater than 5000
-    if passengers_with_fine_greater_than_5000:
-        table_label = tk.Label(self.report_window, text="Passengers with Fine greater than 5000 KD:")
-        table_label.pack()
-        table = ttk.Treeview(self.report_window, columns=("name", "age", "nationality", "fines"))
-        table.heading("#0", text="Civil ID")
-        table.heading("name", text="Name")
-        table.heading("age", text="Age")
-        table.heading("nationality", text="Nationality")
-        table.heading("fines", text="Fines (KD)")
-        for row in passengers_with_fine_greater_than_5000:
-            table.insert("", "end", text=row[0], values=(row[1], row[2], row[4], row[3]))
-        table.pack()
-    else:
-        no_passengers_label = tk.Label(self.report_window, text="No passengers with fine greater than 5000 KD.")
-        no_passengers_label.pack()
+        # read passenger data from database/passengers.csv
+        with open("database/passengers.csv", "r") as file:
+            passenger_data = csv.reader(file)
+            next(passenger_data) # skip header row
 
-    # create a close button to close the report window
-    close_button = tk.Button(self.report_window, text="Close", command=self.report_window.destroy)
-    close_button.pack()
+            # calculate metrics
+            total_fine = 0
+            num_passengers = 0
+            high_fine_passengers = []
+            for passenger in passenger_data:
+                fine = int(passenger[4])
+                total_fine += fine
+                num_passengers += 1
+                if fine > 5000:
+                    high_fine_passengers.append(passenger)
+
+            avg_fine = total_fine / num_passengers
+
+            # update label values with metrics
+            total_fine_label.config(text=f"Total Customs Fine Collected: {total_fine} KD")
+            avg_fine_label.config(text=f"Average Fine Per Passenger: {avg_fine:.2f} KD")
+            high_fine_label.config(text=f"Passengers with Fine Greater Than 5000 KD: {len(high_fine_passengers)}")
