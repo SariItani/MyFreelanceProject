@@ -76,8 +76,3 @@ class LoginScreen(tk.Frame):
             screen.mainloop()
         else:
             print("Role Not Found.")
-
-
-# root = tk.Tk()
-# app = LoginScreen(root)
-# root.mainloop()
